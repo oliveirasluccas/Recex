@@ -14,10 +14,10 @@ DECLARE
 SET @contador = 1
 
 -- Informar abaixo os dados de entrada da nota fiscal
-SET @num_nota_fiscal = 12558
-SET @fornecedor_cnpj = '11669055000105'
-SET @data_nota_fiscal = '20221223'
-SET @valor_nota_fiscal = 4341.22
+SET @num_nota_fiscal = 12559
+SET @fornecedor_cnpj = '11669055000106'
+SET @data_nota_fiscal = '20221224'
+SET @valor_nota_fiscal = 4342
 SET @data_recebimento = '20221226'
 -- Informar abaixo os dados de entrada dos itens de nota fiscal.
 -- Repetir quantas linhas forem necessárias
@@ -31,37 +31,36 @@ INSERT INTO @itens_nota_fiscal (
 		@num_nota_fiscal, 
 		@fornecedor_cnpj,
 		'Descrição 1',
-		4,
-		3.55
+		14,
+		15
 		), -- Fim do lançamento da primeira linha
 		-----------------------------------------------------
 		( -- Lançamento da segunda linha
 		@num_nota_fiscal,
 		@fornecedor_cnpj,
 		'Descrição 2',
-		1,
-		4.32
+		28,
+		30
 		), -- Fim do lançamento da segunda linha 
 		-----------------------------------------------------
-		( -- Lançamento da terceira linha
-		@num_nota_fiscal,
-		@fornecedor_cnpj,
-		'Descrição 3',
-		1,
-		10.00
-		), -- Fim do lançamento da terceira linha
+--		( -- Lançamento da terceira linha
+--		@num_nota_fiscal,
+--		@fornecedor_cnpj,
+--		'Descrição 3',
+--		1,
+--		10.00
+--		), -- Fim do lançamento da terceira linha
 		-----------------------------------------------------
 		(  -- Lançamento da quarta linha
 		@num_nota_fiscal,
 		@fornecedor_cnpj,
-		'Descrição 4',
-		3,
-		1.99
+		'Descrição 3',
+		42,
+		45
 		)  -- Fim do lançamento da quarta e última linha
 
 		SELECT * FROM @itens_nota_fiscal
 
---BEGIN TRANSACTION
 	EXEC SP_CadastraNovaNotaFiscal -- Cadastra a nota fiscal de acordo com os valores acima
 		@NUM_NOTA_FISCAL = @num_nota_fiscal,
 		@FORNECEDOR_CNPJ = @fornecedor_cnpj,
@@ -76,5 +75,4 @@ INSERT INTO @itens_nota_fiscal (
 
 		select * from tab_Itens_Notas_Fiscais
 			where NOTA_FISCAL_NUM = @num_nota_fiscal
-
---COMMIT
+GO
