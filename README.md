@@ -1,0 +1,1 @@
+Projeto similar à operação de recebimento
