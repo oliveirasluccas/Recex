@@ -1,3 +1,16 @@
+/*
+Este script cria a procedure que faz o cadastro dos itens da nota fiscal.
+O parâmetro de entrada é uma tabela que contém as seguintes colunas:
+- Número da nota fiscal
+- CNPJ do fornecedor
+- Descrição do item
+- Quantidade do item
+- Valor unitário do item
+*/
+
+
+USE Recex
+
 CREATE PROCEDURE SP_CadastraNovoItemDeNotaFiscal 
 	@ITENS EntradaItens READONLY
 	AS
